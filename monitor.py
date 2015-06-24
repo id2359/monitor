@@ -1,6 +1,13 @@
 import clips
 
+def dispatch(name):
+    pass
 
-# register python-get-value dispatcher
+if __name__=="__main__":
+    clips.RegisterPythonFunction(dispatch, "python-get-value")
+    clips.Load("rules.clp")
+    clips.Load("initialfacts.clp")
+    clips.Run()
+
 
 
