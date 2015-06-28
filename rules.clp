@@ -1,12 +1,17 @@
+
+(deffunction msg (?s)
+  (printout t ":> " msg crlf))
+
 (defrule get-value
 	?g <- (need ?x)
 	=>
-	(bind ?value (python-get-value ?x))
-	(if (= ?value null) then
-	 	(assert bad ?x)
+	(bind ?value (python-call python-get-value ?x))
+	(if (eq ?value null) then
+	  (assert (bad ?x))
 	else
-		(assert (value ?x ?value)))
-	(retract ?g))
+	(assert (value ?x ?value))
+    (retract ?g)
+	))
 
 (defrule keep-trying
 	?n <- (need ?x)
@@ -24,10 +29,3 @@
 	=>
 	(retract ?n)
 	(retract ?b))
-	
-
-	
-	
-	
-
-	

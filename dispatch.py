@@ -5,17 +5,12 @@ import retrievers
 class DispatchError(Exception):
     pass
 
-
 class Dispatcher(object):
     def get_value(self, name):
+        print "getting %s" % name
         python_name = name.replace("-","_")
-        for module_name in inspect.get_members(retrievers, inspect.ismodule):
-            module = importlib.import_lib(module_name)
-            if hasattr(module, python_name):
-                func = getattr(module, python_name)
-                try:
-                    return func()
-                except:
-                    raise retrievers.RetrievalError(name)
-                
-        raise DispatchError(name)
+        if hasattr(retrievers, python_name):
+            func = getattr(retrievers, python_name)
+            return func()
+        else:
+            raise DispatchError(name)
