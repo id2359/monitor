@@ -37,5 +37,13 @@
    (test (< ?t 20))
    (test (> ?t 15))
    =>
-   (assert (mild))
-   (msg "wear long sleeved shirt"))
+   (assert (output "wear long sleeved shirt")))
+
+
+(defrule output
+    ?o <- (output ?msg)
+    =>
+    (retract ?o)
+    (msg ?msg))
+
+
