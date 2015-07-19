@@ -1,6 +1,6 @@
 
 (deffunction msg (?s)
-  (printout t ":> " msg crlf))
+  (python-call python-print  ?s))
 
 (defrule get-value
 	?g <- (need ?x)
@@ -29,3 +29,13 @@
 	=>
 	(retract ?n)
 	(retract ?b))
+
+
+
+(defrule mild-temperature
+   (value max-temp ?t)
+   (test (< ?t 20))
+   (test (> ?t 15))
+   =>
+   (assert (mild))
+   (msg "wear long sleeved shirt"))

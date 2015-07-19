@@ -23,8 +23,13 @@ def get_value(name):
         print "dispatch err: %s" % ex
         return NULL_VALUE
 
+
+def python_print(msg):
+    print "MON:> %s" % msg
+
 if __name__=="__main__":
     clips.RegisterPythonFunction(get_value, "python-get-value")
+    clips.RegisterPythonFunction(python_print, "python-print")
     clips.Load("rules.clp")
     clips.LoadFacts("initialfacts.clp")
     clips.Run()
