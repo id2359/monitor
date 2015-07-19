@@ -1,3 +1,5 @@
+(deffunction out (?s)
+    (assert (output ?s)))
 
 (deffunction msg (?s)
   (python-call python-print  ?s))
@@ -37,7 +39,19 @@
    (test (< ?t 20))
    (test (> ?t 15))
    =>
-   (assert (output "wear long sleeved shirt")))
+   (out "wear long sleeved shirt"))
+
+(defrule hot
+    (value max-temp ?t)
+    (test (> ?t 25))
+    =>
+    (out "wear tshirt"))
+
+(defrule cold
+    (value max-temp ?t)
+    (test (< ?t 15))
+    =>
+    (assert (output "wear a jumper")))
 
 
 (defrule output
@@ -45,5 +59,4 @@
     =>
     (retract ?o)
     (msg ?msg))
-
 
