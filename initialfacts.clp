@@ -1,5 +1,3 @@
 (need max-temp)
 (need chance-rain)
-(need foobar)
 (policy max-temp keeptrying)
-(policy foobar giveup)
