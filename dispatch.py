@@ -11,7 +11,10 @@ class Dispatcher(object):
             func = getattr(retrievers, python_name)
             return func()
         elif os.path.exists(name):
-            result = float(os.popen(name).read().strip())
+            try:
+                result = float(os.popen(name).read().strip())
+            except ValueError:
+                raise DispatchError(name)
             return result
         else:
             raise DispatchError(name)
