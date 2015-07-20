@@ -15,6 +15,12 @@
     (retract ?g)
 	))
 
+(defrule value-msg
+    (value ?x ?y)
+    =>
+    (msg (str-cat "VAL: " ?x " = " ?y)))
+
+
 (defrule keep-trying
 	?n <- (need ?x)
 	?b <- (bad ?x)
@@ -59,4 +65,10 @@
     =>
     (retract ?o)
     (msg ?msg))
+
+(defrule rain
+    (value chance-rain ?prob)
+    (test (>= ?prob 60))
+    =>
+    (out "take umbrella"))
 
