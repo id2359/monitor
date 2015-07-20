@@ -42,8 +42,8 @@
 
 (defrule mild-temperature
    (value max-temp ?t)
-   (test (< ?t 20))
-   (test (> ?t 15))
+   (test (< ?t 21))
+   (test (>= ?t 17))
    =>
    (out "wear long sleeved shirt"))
 
@@ -55,7 +55,7 @@
 
 (defrule cold
     (value max-temp ?t)
-    (test (< ?t 15))
+    (test (< ?t 17))
     =>
     (assert (output "wear a jumper")))
 
