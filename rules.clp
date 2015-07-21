@@ -72,3 +72,13 @@
     =>
     (out "take umbrella"))
 
+(defrule miserable
+  (value chance-rain ?prob)
+  (test (>= ?prob  90))
+  (value max-temp ?t)
+  (test (< ?t 16))
+  =>
+  (out "miserable! work from home!"))
+
+
+
