@@ -1,0 +1,14 @@
+#!/Users/frug/bin/rebol -qs
+rebol []
+url: http://www.bom.gov.au/wa/forecasts/perth.shtml
+
+rule: [  
+       thru {<dd class="rain">Chance of any rain: <em class="pop">} 
+        copy prob to "%"
+        ( print prob )
+        ]
+
+html: read url
+parse/all  html [ rule to end ]
+
+
