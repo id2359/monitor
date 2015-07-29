@@ -113,16 +113,3 @@
   =>
   (out "miserable! work from home!"))
 
-(defrule unhealthy
-    (food ?d ?f unhealthy)
-    (bind ?t (today))
-    (bind ?x (add-days ?t -7))
-    (after ?d ?x)
-    =>
-    (out (str-cat "unhealthy food: " ?f))
-    
-)
-
-
-
-
