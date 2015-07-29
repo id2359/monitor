@@ -1,3 +1,5 @@
+*Summary*
+
 This program does a grab-bag of personal things - the intent is to output a daily "briefing" by monitoring
 a weather site and some other logs of my daily activities.
 
@@ -10,3 +12,13 @@ Running runmonitor:
    to be registered in CLIPS. I've registered some date manipulation functions mainly.)
    
 5) The output is stored as both rebol data and clips facts as well as summarised in the stdout.
+
+
+
+*Design*
+
+The monitor can pick up arbritrary external programs or functions in retrievers:
+
+a CLIPS initial of fact (need xyx)   causes the system to look for a python registered function of "get_xyz" OR
+and external program get-xyz. Results are limited to floats at the moment ( temperature , chance of rain were
+were initially added. I'll fix up other types later.
