@@ -23,7 +23,7 @@ foreach line lines [
         append/only blk b
     ]
 
-save %/Users/frug/Dropbox/food-diary.r blk
+save %food-data.r blk
 
 clips-fact: func [ food date  foodtype ][
     return rejoin [ "(food " food " " {"} date {"}   " " foodtype ")" newline ]

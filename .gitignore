@@ -1,3 +1,8 @@
+\.DS_Store
+*.pyc
+*.tmp
 taplog.clp
 food.clp
 output.clp
+taplog-data.r
+food-data.r
