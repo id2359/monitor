@@ -2,6 +2,7 @@ import clips
 from dispatch import Dispatcher, DispatchError
 from retrievers import RetrievalError
 import sys
+import os
 
 sys.path.append('retrievers')
 
@@ -27,5 +28,9 @@ if __name__=="__main__":
     clips.RegisterPythonFunction(python_print, "python-print")
     clips.Load("rules.clp")
     clips.LoadFacts("initialfacts.clp")
+    if os.path.exists("food.clp"):
+        clips.LoadFacts("food.clp")
+    if os.path.exists("taplog.clp"):
+        clips.LoadFacts("taplog.clp")
     clips.Run()
     clips.SaveFacts("output.clp")
