@@ -1,0 +1,17 @@
+#!/bin/bash
+FOOD=~/Dropbox/food.csv
+TAPLOG=~/Dropbox/taplog.log
+
+if [ -f $FOOD ]; then
+    rebol -qs parse-fooddiary.r $FOOD
+else
+    echo "$FOOD doesn't exist - skipping"
+fi
+
+if [ -f $TAPLOG ]; then
+    rebol -qs parse-taplog.r $TAPLOG
+else
+    echo "$TAPLOG doesn't exist - skipping"
+fi
+
+python monitor.py
