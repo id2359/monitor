@@ -3,6 +3,7 @@ from dispatch import Dispatcher, DispatchError
 from retrievers import RetrievalError
 import sys
 import os
+from  datefuncs import *
 
 sys.path.append('retrievers')
 
@@ -26,6 +27,21 @@ def python_print(msg):
 if __name__=="__main__":
     clips.RegisterPythonFunction(get_value, "python-get-value")
     clips.RegisterPythonFunction(python_print, "python-print")
+    clips.RegisterPythonFunction(days, "python-days")
+    print "days"
+    clips.RegisterPythonFunction(add_days, "python-add-days")
+    print "add_days"
+    clips.RegisterPythonFunction(add_weeks, "python-add-weeks")
+    print "add_weeks"
+    clips.RegisterPythonFunction(add_months, "python-add-months")
+    print "add_months"
+    clips.RegisterPythonFunction(add_years, "python-add-years")
+    print "add_years"
+    clips.RegisterPythonFunction(today, "python-today")
+    print "today"
+    clips.RegisterPythonFunction(after, "python-after")
+    print "after"
+
     clips.Load("rules.clp")
     clips.LoadFacts("initialfacts.clp")
     if os.path.exists("food.clp"):
