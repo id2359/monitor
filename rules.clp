@@ -1,8 +1,41 @@
+(deffunction today ()
+    (python-call python-today))
+
 (deffunction out (?s)
     (assert (output ?s)))
 
+(deffunction days (?a ?b)
+    (python-call python-days ?a ?b))
+
+(deffunction add-days (?a ?n)
+    (python-call python-add-days ?a ?n))
+
+(deffunction add-weeks (?a ?n)
+    (python-call python-add-weeks ?a ?n))
+
+(deffunction add-months (?a ?n)
+    (python-call python-add-months ?a ?n))
+
+(deffunction add-years (?a ?n)
+    (python-call python-add-years ?a ?n))
+
+(deffunction weeks-ago (?a ?n)
+    (add-weeks ?a (* -1 ?n)))
+
+(deffunction days-ago (?a ?n)
+    (add-days ?a (* -1 ?n)))
+
+(deffunction years-ago (?a ?n)
+    (add-years ?a (* -1 ?n)))
+
+
 (deffunction msg (?s)
   (python-call python-print  ?s))
+
+(deffunction after (?a ?b)
+  (python-call python-after ?a ?b))
+
+
 
 (defrule get-value
 	?g <- (need ?x)
@@ -79,6 +112,17 @@
   (test (< ?t 16))
   =>
   (out "miserable! work from home!"))
+
+(defrule unhealthy
+    (food ?d ?f unhealthy)
+    (bind ?t (today))
+    (bind ?x (add-days ?t -7))
+    (after ?d ?x)
+    =>
+    (out (str-cat "unhealthy food: " ?f))
+    
+)
+
 
 
 
