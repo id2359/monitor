@@ -1,3 +1,5 @@
+#! /usr/bin/python
+
 import clips
 from dispatch import Dispatcher, DispatchError
 from retrievers import RetrievalError
