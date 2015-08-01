@@ -14,4 +14,4 @@ else
     echo "$TAPLOG doesn't exist - skipping"
 fi
 
-python monitor.py
+python src/monitor.py

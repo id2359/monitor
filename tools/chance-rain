@@ -1,4 +1,4 @@
-#!/Users/frug/bin/rebol -qs
+#!/home/frug/bin/rebol -qs
 rebol []
 url: http://www.bom.gov.au/wa/forecasts/perth.shtml
 
