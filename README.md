@@ -1,3 +1,4 @@
+# Rebol and CLIPS based monitor
 *Summary*
 
 This program does a grab-bag of personal things - the intent is to output a daily "briefing" by monitoring

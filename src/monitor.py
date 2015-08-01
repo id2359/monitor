@@ -1,3 +1,5 @@
+#! /usr/bin/python
+
 import clips
 from dispatch import Dispatcher, DispatchError
 from retrievers import RetrievalError
@@ -5,7 +7,7 @@ import sys
 import os
 from  datefuncs import *
 
-sys.path.append('retrievers')
+sys.path.append('./src/retrievers')
 
 NULL_VALUE = clips.Symbol("null")
 
@@ -13,11 +15,14 @@ def get_value(name):
     try:
         value = Dispatcher().get_value(name)
         return clips.Integer(value)
-    except RetrievalError:
+    except RetrievalError, rerr:
+        print "retrieval error for %s: %s" % (name, rerr)
         return NULL_VALUE
-    except DispatchError:
+    except DispatchError, derr:
+        print "dispatch error for %s: %s" % (name, derr)
         return NULL_VALUE
     except Exception, ex:
+        print "Unexpected error for %s: %s" % (name, ex)
         return NULL_VALUE
 
 
@@ -42,11 +47,15 @@ if __name__=="__main__":
     clips.RegisterPythonFunction(after, "python-after")
     print "after"
 
-    clips.Load("rules.clp")
-    clips.LoadFacts("initialfacts.clp")
+    clips.Load("src/rules.clp")
+    print "loaded rules"
+    clips.LoadFacts("src/initialfacts.clp")
+    print "loaded initial facts"
     if os.path.exists("food.clp"):
         clips.LoadFacts("food.clp")
     if os.path.exists("taplog.clp"):
         clips.LoadFacts("taplog.clp")
     clips.Run()
+    print "run completed"
     clips.SaveFacts("output.clp")
+    print "saved output"

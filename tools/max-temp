@@ -1,4 +1,4 @@
-#!/Users/frug/bin/rebol -qs
+#!/home/frug/bin/rebol  -qs
 rebol [
   title: "max-temp"
   description: { retrieve maximum temperature }
